@@ -46,6 +46,8 @@ export class AminoTypes {
           "If you think this message type should be included by default, please open an issue at https://github.com/cosmos/cosmjs/issues.",
       );
     }
+    //adding custom type (not using type/value structure due to bug in JSON structure of authz in SDK v0.45 - wait for 0.46 fix)
+    if(converter.aminoType == "cosmos-sdk/MsgGrant") return converter.toAmino(value);
     return {
       type: converter.aminoType,
       value: converter.toAmino(value),
